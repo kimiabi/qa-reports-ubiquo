@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reporte QA — Impacto de la Automatización · Reach</title>
+  <!--
+    LIBRERÍAS EXTERNAS: Ninguna.
+    Todo es HTML + CSS + JavaScript vanilla puro.
+    Gráfica donut: CSS conic-gradient animado con JS.
+    Iconos: SVG inline.
+  -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- =========================================================
+       NAV — anclas de navegación fija
+  ========================================================= -->
+  <nav class="topnav" id="topnav">
+    <div class="nav-wrap">
+      <a href="#header" class="nav-brand">
+        <svg class="logo" width="130" height="26" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="125.93 114.8 1025.15 160.37"><path fill="#23BADC" d="M450 275c-16.83 0-33.162.054-49.492-.012-27.168-.11-53.112-21.107-56.295-48.224-1.636-13.942-.738-28.17-1.258-42.258-.439-11.854.668-23.422 6.307-34.017 9.793-18.4 24.982-29.522 45.788-32.453 4.718-.665 9.524-.986 14.29-.993 48.326-.07 96.651-.044 144.977-.042 7.522 0 8.334 1.424 4.856 8.449-3.204 6.47-6.606 12.856-9.512 19.46-1.718 3.905-4.198 5.174-8.36 5.162-42.827-.118-85.654-.24-128.479.044-11.084.073-21.59 3.346-28.219 13.061-2.832 4.15-3.933 9.54-5.423 14.486-.234.778 1.445 2.578 2.615 3.199 1.043.554 2.605.137 3.937.137 45.826.001 91.652-.002 137.478.004 5.874.001 6.822 1.363 4.466 6.688-3.042 6.878-6.273 13.673-9.3 20.558-1.228 2.796-3.072 3.846-6.165 3.812-13.163-.144-26.33.04-39.493-.082-28.6-.266-57.197-.663-85.796-.966-6.468-.069-8.174 2.422-6.628 8.713 3.216 13.09 14.18 21.692 26.804 22.12 26.243.886 52.518.827 78.78 1.136 2.517.03 5.146-.567 7.529-.023 3.684.843 4.596 3.835 3.056 6.983-3.67 7.504-7.433 14.987-11.696 22.159-.97 1.632-4.1 2.701-6.276 2.771-9.322.3-18.66.128-28.491.128z"></path><path fill="#FFFFFF" d="M150 117c40.315 0 80.13-.092 119.945.053 12.846.047 24.885 2.841 35.626 10.74 12.283 9.03 20.293 20.008 19.385 35.895-.38 6.65-.46 13.47-2.071 19.86-2.492 9.878-10.4 15.674-18.65 20.703-5.518 3.364-5.576 4.443-.238 8.298 6.973 5.036 14.232 9.944 16.244 19.184.72 3.305 1.583 6.656 1.68 10.006.241 8.323.093 16.657.075 24.986-.014 6.426-1.816 8.271-8.012 8.274-7.497.004-14.995-.105-22.489.043-4.075.08-5.62-1.668-5.54-5.66.154-7.494-.032-14.994.06-22.49.202-16.26-8.978-22.516-22.303-22.725-32.477-.511-64.968-.145-97.453-.192-4.609-.007-6.33 2.205-6.294 6.63.1 12.493.056 24.988.026 37.482-.015 5.976-.971 6.907-6.798 6.912-7.496.006-14.996-.117-22.488.055-3.289.076-4.779-.708-4.772-4.41.1-49.477.097-98.955.017-148.432-.007-4.488 2.74-5.123 6.06-5.182 5.828-.106 11.66-.03 17.99-.03m62.5 31c-15.996 0-31.992.085-47.987-.066-3.523-.033-4.626 1.138-4.577 4.616.167 11.994.056 23.993.067 35.99.006 5.973.506 6.457 6.65 6.458 32.825.005 65.652-.247 98.473.112 15.222.167 27.364-9.77 25.912-26.432-.96-11.013-9.706-20.867-21.054-20.737-18.825.216-37.656.059-57.484.059zM853 275c-20.49 0-40.493.451-60.468-.106-29.812-.831-55.087-21.834-60.098-51.358-2.69-15.842-2.543-32.54-1.113-48.624 2.552-28.72 24.176-52.46 53.23-56.9 3.219-.492 6.484-.964 9.729-.97 43.145-.063 86.291-.042 129.437-.042 6.593 0 8.266 1.714 8.28 8.507.012 5.664.057 11.328-.011 16.992-.08 6.694-1.89 8.487-8.416 8.497-9.163.014-18.325.004-27.487.004-32.817 0-65.638.26-98.45-.108-16.928-.19-32.493 14.14-31.712 31.976.437 9.976-.107 19.991.125 29.981.302 12.987 11.214 26.299 24.617 28.107 4.537.613 9.144.991 13.72 1 40.146.076 80.294.125 120.44-.04 6.393-.026 7.466 1.872 7.246 7.02-.283 6.652-.24 13.33-.01 19.986.157 4.5-1.568 6.167-6.095 6.142-24.154-.135-48.31-.064-72.964-.064zM687.73 182.231c5.745 11.07 11.149 21.907 16.71 32.663 8.669 16.766 17.484 33.457 26.154 50.223 3.518 6.803 1.604 9.88-5.917 9.883-6.832.002-13.684-.326-20.487.108-4.985.318-7.649-2.092-9.616-6.02-4.559-9.096-9.176-18.165-13.55-27.35-1.7-3.57-3.954-4.86-8.02-4.84-34.155.179-68.313.24-102.467-.034-5.677-.045-8.41 2.637-10.514 7.026-4.04 8.424-8.107 16.837-12.014 25.322-1.929 4.19-4.666 6.182-9.558 5.893-6.973-.412-13.989-.095-20.987-.108-6.405-.012-8.109-2.927-5.148-8.763 12.71-25.052 25.412-50.109 38.129-75.158 9.28-18.281 18.403-36.646 27.937-54.795 5.64-10.736 15.676-16.095 26.842-19.181 14.11-3.9 28.187-2.876 41.412 3.334 7.521 3.531 14.037 8.792 17.972 16.645 7.52 15.01 15.225 29.928 23.122 45.152m-105.695 19.562c.921 1.074 1.693 2.856 2.792 3.088a50.412 50.412 0 0 0 10.117 1.075c19.624.09 39.25-.016 58.873.096 3.838.021 4.528-2.239 4.063-5.021a30.632 30.632 0 0 0-2.62-8.222c-6.332-13.046-12.569-26.15-19.364-38.956-5.715-10.77-22.71-11.306-29.175-.962-3.73 5.968-6.519 12.53-9.685 18.847-4.9 9.773-9.76 19.566-15.001 30.055zM1120.24 117.932c9.163-.364 17.909-.914 26.628-.632 1.438.046 3.825 3.68 3.943 5.76.462 8.14.189 16.322.189 24.488v118.488c0 8.054-.935 8.964-9.208 8.964-5.666 0-11.332.004-16.998-.001-5.903-.006-7.777-1.892-7.786-8-.024-15.832-.003-31.664-.01-47.496-.003-5.533-2.805-8.48-8.36-8.485-37.996-.034-75.992-.03-113.988-.006-5.782.004-8.63 2.942-8.64 8.83-.028 15.999-.001 31.997-.015 47.996-.005 5.267-1.838 7.137-7.005 7.156-6.666.024-13.332.023-19.998 0-4.682-.015-6.77-2.059-6.984-6.798-.053-1.164-.008-2.333-.008-3.5V126.21c0-7.754 1.441-9.21 9.085-9.21 5.833 0 11.666-.01 17.499.003 5.607.012 7.408 1.76 7.412 7.253.012 16.165-.006 32.33.009 48.495.006 6.513 2.728 9.242 9.238 9.244 37.496.01 74.992.01 112.488 0 6.608-.001 9.267-2.637 9.268-9.091.002-15.832-.12-31.666.127-47.493.038-2.476 1.75-4.925 3.114-7.479z"></path></svg>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#s1">01</a></li>
+        <li><a href="#s2">02</a></li>
+        <li><a href="#s3">03</a></li>
+        <li><a href="#s4">04</a></li>
+        <li><a href="#s5">05</a></li>
+        <li><a href="#s6">06</a></li>
+        <li><a href="#s7">07</a></li>
+        <li><a href="#s8">08</a></li>
+        <li><a href="#s9">09</a></li>
+        <li><a href="#s10">10</a></li>
+        <li><a href="#s11">11</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- =========================================================
+       HEADER
+  ========================================================= -->
+  <header class="hero" id="header">
+    <div class="hero-wrap">
+
+      <!-- Centro: títulos + KPIs -->
+      <div class="hero-center">
+        <div class="hero-eyebrow">QA REPORT · 2026</div>
+        <h1 class="hero-title">
+          Reporte QA —
+          <em>Impacto de la Automatización</em>
+        </h1>
+        <p class="hero-sub">
+          Comparativo del proceso QA: antes vs ahora, tiempos, cobertura y prácticas actuales
+        </p>
+
+        <!-- Strip de KPIs -->
+        <div class="kpi-strip">
+
+          <div class="kpi-chip">
+            <svg class="kpi-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#00d4ff" stroke-width="1.8"/><path d="M8 12h8M8 8h8M8 16h5" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="kpi-chip-label">Test cases</span>
+            <span class="kpi-chip-val" data-target="926">0</span>
+            <span class="kpi-chip-sub">&nbsp;</span>
+          </div>
+
+          <div class="kpi-chip">
+            <svg class="kpi-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#a855f7" stroke-width="1.8"/><path d="M9 12l2 2 4-4" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="kpi-chip-label">Casos<br>automatizados</span>
+            <span class="kpi-chip-val kpi-purple" data-target="901">0</span>
+            <span class="kpi-chip-sub">&nbsp;</span>
+          </div>
+
+          <div class="kpi-chip">
+            <svg class="kpi-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4" stroke="#00d4ff" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span class="kpi-chip-label">%<br>automatización</span>
+            <span class="kpi-chip-val kpi-cyan">97.3%</span>
+            <span class="kpi-chip-sub">&nbsp;</span>
+          </div>
+
+          <div class="kpi-chip">
+            <svg class="kpi-icon" viewBox="0 0 24 24" fill="none"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#e879f9" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span class="kpi-chip-label">Bugs<br>reportados</span>
+            <span class="kpi-chip-val kpi-magenta" data-target="44">0</span>
+            <span class="kpi-chip-sub">&nbsp;</span>
+          </div>
+
+          <div class="kpi-chip">
+            <svg class="kpi-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#4a6cf7" stroke-width="1.8"/><path d="M12 8v4l3 3" stroke="#4a6cf7" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span class="kpi-chip-label">Cobertura<br>principal</span>
+            <!-- <span class="kpi-chip-val kpi-blue">52%</span> -->
+            <span class="kpi-chip-sub kpi-blue-sub">quickly 52%</span>
+            <span class="kpi-chip-sub kpi-blue-sub">reach 48%</span>
+          </div>
+
+          <div class="kpi-chip">
+            <svg class="kpi-icon" viewBox="0 0 24 24" fill="none"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke="#00ff88" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="kpi-chip-label">Plataformas<br>automatizadas</span>
+            <span class="kpi-chip-val kpi-green" data-target="4">0</span>
+            <span class="kpi-chip-sub">233 specs</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bot QA derecha -->
+      <div class="hero-bot">
+        <div class="bot-img-wrap">
+          <img src="bot.png" alt="QA Bot" class="bot-img" id="botImg"/>
+          <div class="bot-img-glow"></div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Grid de fondo decorativo -->
+    <div class="hero-grid" aria-hidden="true"></div>
+  </header>
+
+  <main>
+
+    <!-- =========================================================
+         S1 — ¿Qué teníamos antes?
+    ========================================================= -->
+    <section class="sec" id="s1">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="sec-num" style="--nc:#a855f7">1</div>
+          <h2 class="sec-title">¿Qué teníamos antes?</h2>
+        </div>
+        <div class="grid-6">
+          <div class="card card-before fade-in">
+            <div class="card-icon-wrap" style="--ci:#94a3b8">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="card-label">Modelo de trabajo</div>
+              <div class="card-val">Manual y reactivo</div>
+            </div>
+          </div>
+          <div class="card card-before fade-in">
+            <div class="card-icon-wrap" style="--ci:#94a3b8">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="card-label">Automatización</div>
+              <div class="card-val">1 sistema</div>
+              <div class="card-note">(BO_reach)</div>
+            </div>
+          </div>
+          <div class="card card-before fade-in">
+            <div class="card-icon-wrap" style="--ci:#94a3b8">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="card-label">Trazabilidad</div>
+              <div class="card-val">Limitada</div>
+            </div>
+          </div>
+          <div class="card card-before fade-in">
+            <div class="card-icon-wrap" style="--ci:#94a3b8">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="card-label">Resolución de bugs</div>
+              <div class="card-val before-highlight">3.4 días</div>
+            </div>
+          </div>
+          <div class="card card-before fade-in">
+            <div class="card-icon-wrap" style="--ci:#94a3b8">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="card-label">Tiempo por feature</div>
+              <div class="card-val before-highlight">5 días</div>
+            </div>
+          </div>
+          <div class="card card-before fade-in">
+            <div class="card-icon-wrap" style="--ci:#94a3b8">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="card-label">Regresión</div>
+              <div class="card-val">Horas de validación manual</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         S2 — Prácticas que tenemos ahora
+    ========================================================= -->
+    <section class="sec sec-alt" id="s2">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="sec-num" style="--nc:#00d4ff">2</div>
+          <h2 class="sec-title">Prácticas que tenemos ahora</h2>
+        </div>
+        <div class="grid-6">
+          <div class="card card-now fade-in">
+            <div class="card-icon-wrap" style="--ci:#00d4ff">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="card-title-now">Proceso formal</div>
+              <div class="card-desc">Las features pasan por contexto, plan, aprobación, ejecución y métricas.</div>
+            </div>
+          </div>
+          <div class="card card-now fade-in">
+            <div class="card-icon-wrap" style="--ci:#a855f7">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="card-title-now">Automatización activa</div>
+              <div class="card-desc">Existe regresión funcional en múltiples módulos.</div>
+            </div>
+          </div>
+          <div class="card card-now fade-in">
+            <div class="card-icon-wrap" style="--ci:#4a6cf7">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="card-title-now">Cobertura documentada</div>
+              <div class="card-desc">Los casos ya están organizados y trazables.</div>
+            </div>
+          </div>
+          <div class="card card-now fade-in">
+            <div class="card-icon-wrap" style="--ci:#e879f9">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="card-title-now">Detección temprana</div>
+              <div class="card-desc">La automatización ayuda a detectar bugs antes.</div>
+            </div>
+          </div>
+          <div class="card card-now fade-in">
+            <div class="card-icon-wrap" style="--ci:#00d4ff">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="card-title-now">Resultados centralizados</div>
+              <div class="card-desc">La evidencia y resultados se guardan en el repositorio QA.</div>
+            </div>
+          </div>
+          <div class="card card-now fade-in">
+            <div class="card-icon-wrap" style="--ci:#00ff88">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="card-body">
+              <div class="card-title-now">Comparación y seguimiento</div>
+              <div class="card-desc">Ya podemos medir evolución, tiempos y cobertura.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         S3 — Comparación de tiempo
+    ========================================================= -->
+    <section class="sec" id="s3">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="sec-num" style="--nc:#4a6cf7">3</div>
+          <h2 class="sec-title">Comparación de tiempo: Antes vs Ahora</h2>
+        </div>
+
+        <div class="table-wrap fade-in">
+          <table class="cmp-table">
+            <thead>
+              <tr>
+                <th>Actividad</th>
+                <th class="th-before">Antes</th>
+                <th class="th-now">Ahora</th>
+                <th class="th-impact">Impacto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-act">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke="#64748b" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  <strong>Regresión</strong>
+                </td>
+                <td class="td-before">Manual · 2–3 horas por ciclo</td>
+                <td class="td-now-cell">Automatizada · 5–10 min por suite completa</td>
+                <td class="td-impact"><span class="badge-impact">30x–45x más rápido</span></td>
+              </tr>
+              <tr>
+                <td class="td-act">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke="#64748b" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  <strong>Tiempo por feature</strong>
+                </td>
+                <td class="td-before">5 días</td>
+                <td class="td-now-cell">3 días promedio (rango 1–5 días)</td>
+                <td class="td-impact"><span class="badge-impact badge-blue">Proceso medible<br>y predecible</span></td>
+              </tr>
+              <tr>
+                <td class="td-act">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#64748b" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  <strong>Retest</strong>
+                </td>
+                <td class="td-before">Manual completo · 1 día por bug</td>
+                <td class="td-now-cell">0.25 días promedio</td>
+                <td class="td-impact"><span class="badge-impact badge-purple">4x más rápido</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bloque comparación operativa -->
+        <div class="cycle-block fade-in">
+          <div class="cycle-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="#00d4ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Comparación operativa por ciclo
+          </div>
+          <div class="cycle-rows">
+            <div class="cycle-row">
+              <span class="cycle-lbl">Automatizado</span>
+              <div class="cycle-bar-wrap">
+                <div class="cycle-bar" style="--bw:6.5%;--bc:#00d4ff"></div>
+              </div>
+              <span class="cycle-val cycle-val-auto">1–1.5 h</span>
+            </div>
+            <div class="cycle-row">
+              <span class="cycle-lbl">Manual</span>
+              <div class="cycle-bar-wrap">
+                <div class="cycle-bar" style="--bw:100%;--bc:#ef4444"></div>
+              </div>
+              <span class="cycle-val cycle-val-manual">20–22 h</span>
+            </div>
+          </div>
+          <p class="cycle-note" style="color:#ffffff">Menor esfuerzo operativo con automatización · misma o mayor cobertura</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         S4 — Impacto de la automatización
+    ========================================================= -->
+    <section class="sec sec-alt" id="s4">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="sec-num" style="--nc:#e879f9">4</div>
+          <h2 class="sec-title">Impacto de la automatización</h2>
+        </div>
+        <div class="grid-6">
+          <div class="card card-impact fade-in" style="--ic:#00d4ff">
+            <div class="impact-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="impact-num">901<span>/926</span></div>
+            <div class="impact-name">Cobertura automatizada</div>
+            <div class="impact-sub">97.3% de los casos de prueba</div>
+          </div>
+          <div class="card card-impact fade-in" style="--ic:#a855f7">
+            <div class="impact-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="impact-num">8<span>min</span></div>
+            <div class="impact-name">Velocidad de regresión</div>
+            <div class="impact-sub">De horas manuales a minutos</div>
+          </div>
+          <div class="card card-impact fade-in" style="--ic:#e879f9">
+            <div class="impact-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="impact-num">15x</div>
+            <div class="impact-name">Eficiencia operativa</div>
+            <div class="impact-sub">1–1.5 h auto vs 20–22 h manual</div>
+          </div>
+          <div class="card card-impact fade-in" style="--ic:#4a6cf7">
+            <div class="impact-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke="currentColor" stroke-width="1.8"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" stroke="currentColor" stroke-width="1.8"/></svg>
+            </div>
+            <div class="impact-num">100%</div>
+            <div class="impact-name">Mayor visibilidad</div>
+            <div class="impact-sub">Resultados trazables y comparables</div>
+          </div>
+          <div class="card card-impact fade-in" style="--ic:#00ff88">
+            <div class="impact-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="impact-num">✓</div>
+            <div class="impact-name">Proceso medible</div>
+            <div class="impact-sub">Comparamos tiempos, cobertura y evolución</div>
+          </div>
+          <div class="card card-impact fade-in" style="--ic:#00d4ff">
+            <div class="impact-icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="impact-num">233</div>
+            <div class="impact-name">Escalabilidad</div>
+            <div class="impact-sub">Specs disponibles en 4 plataformas</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         S5 — Resumen de métricas principales
+    ========================================================= -->
+    <section class="sec" id="s5">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="sec-num" style="--nc:#00d4ff">5</div>
+          <h2 class="sec-title">Resumen de métricas principales</h2>
+        </div>
+        <div class="metrics-strip fade-in">
+          <div class="metric-card">
+            <div class="metric-icon" style="--mi:#00d4ff">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M8 12h8M8 8h8M8 16h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="metric-num" data-target="926">0</div>
+            <div class="metric-lbl">Test cases</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon" style="--mi:#a855f7">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="metric-num" data-target="901">0</div>
+            <div class="metric-lbl">Casos automatizados</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon" style="--mi:#00d4ff">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="metric-num">97.3<small>%</small></div>
+            <div class="metric-lbl">% automatización</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon" style="--mi:#e879f9">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="metric-num" data-target="44">0</div>
+            <div class="metric-lbl">Bugs reportados</div>
+          </div>
+          <div class="metric-card metric-card-wide">
+            <div class="metric-icon" style="--mi:#4a6cf7">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" stroke="currentColor" stroke-width="1.8"/></svg>
+            </div>
+            <div class="cov-bars">
+              <div class="cov-row">
+                <span class="cov-plat">web_quickly</span>
+                <div class="cov-bar-bg"><div class="cov-bar-fill" style="width:52%;background:#00d4ff"></div></div>
+                <span class="cov-pct">52%</span>
+              </div>
+              <div class="cov-row">
+                <span class="cov-plat">web_reach</span>
+                <div class="cov-bar-bg"><div class="cov-bar-fill" style="width:48%;background:#4a6cf7"></div></div>
+                <span class="cov-pct">48%</span>
+              </div>
+            </div>
+            <div class="metric-lbl">Cobertura principal</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon" style="--mi:#00ff88">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="metric-num" data-target="233">0</div>
+            <div class="metric-lbl">Specs · 4 plataformas</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         S6 — Automatización por feature
+    ========================================================= -->
+    <section class="sec sec-alt" id="s6">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="sec-num" style="--nc:#a855f7">6</div>
+          <h2 class="sec-title">Automatización por feature</h2>
+        </div>
+        <div class="table-wrap fade-in">
+          <table class="feat-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th class="tc">Total TCs</th>
+                <th class="tc">Auto PASS</th>
+                <th class="tc">% Auto</th>
+                <th class="th-bar">Cobertura</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="fdot" style="--dc:#00d4ff"></span>SMS Dashboard</td><td class="tc">200</td><td class="tc c-cyan">200</td><td class="tc"><span class="pct-pill">100%</span></td><td><div class="fbar"><div class="fbar-fill" style="width:100%;--fc:#00d4ff"></div></div></td></tr>
+              <tr><td><span class="fdot" style="--dc:#a855f7"></span>MSISDN Multi-País</td><td class="tc">76</td><td class="tc c-cyan">76</td><td class="tc"><span class="pct-pill">100%</span></td><td><div class="fbar"><div class="fbar-fill" style="width:100%;--fc:#a855f7"></div></div></td></tr>
+              <tr><td><span class="fdot" style="--dc:#4a6cf7"></span>Messages Archivos</td><td class="tc">72</td><td class="tc c-cyan">72</td><td class="tc"><span class="pct-pill">100%</span></td><td><div class="fbar"><div class="fbar-fill" style="width:100%;--fc:#4a6cf7"></div></div></td></tr>
+              <tr><td><span class="fdot" style="--dc:#e879f9"></span>WABA Campaigns</td><td class="tc">61</td><td class="tc c-cyan">61</td><td class="tc"><span class="pct-pill">100%</span></td><td><div class="fbar"><div class="fbar-fill" style="width:100%;--fc:#e879f9"></div></div></td></tr>
+              <tr><td><span class="fdot" style="--dc:#00d4ff"></span>MO Classification</td><td class="tc">47</td><td class="tc c-cyan">47</td><td class="tc"><span class="pct-pill">100%</span></td><td><div class="fbar"><div class="fbar-fill" style="width:100%;--fc:#00d4ff"></div></div></td></tr>
+              <tr><td><span class="fdot" style="--dc:#a855f7"></span>Reenvío por Archivo</td><td class="tc">46</td><td class="tc c-cyan">46</td><td class="tc"><span class="pct-pill">100%</span></td><td><div class="fbar"><div class="fbar-fill" style="width:100%;--fc:#a855f7"></div></div></td></tr>
+              <tr><td><span class="fdot" style="--dc:#4a6cf7"></span>Mensajes Normales + Bitácora</td><td class="tc">42</td><td class="tc c-cyan">42</td><td class="tc"><span class="pct-pill">100%</span></td><td><div class="fbar"><div class="fbar-fill" style="width:100%;--fc:#4a6cf7"></div></div></td></tr>
+              <tr><td><span class="fdot" style="--dc:#00ff88"></span>Agregar Contactos</td><td class="tc">43</td><td class="tc c-cyan">43</td><td class="tc"><span class="pct-pill">100%</span></td><td><div class="fbar"><div class="fbar-fill" style="width:100%;--fc:#00ff88"></div></div></td></tr>
+              <tr><td><span class="fdot" style="--dc:#e879f9"></span>WABA Billing (run parcial)</td><td class="tc">40</td><td class="tc c-cyan">40</td><td class="tc"><span class="pct-pill">100%</span></td><td><div class="fbar"><div class="fbar-fill" style="width:100%;--fc:#e879f9"></div></div></td></tr>
+              <tr><td><span class="fdot" style="--dc:#00d4ff"></span>WABA Webhooks Dialog360</td><td class="tc">37</td><td class="tc c-cyan">37</td><td class="tc"><span class="pct-pill">100%</span></td><td><div class="fbar"><div class="fbar-fill" style="width:100%;--fc:#00d4ff"></div></div></td></tr>
+              <tr><td><span class="fdot" style="--dc:#a855f7"></span>Storefront fix validation</td><td class="tc">28</td><td class="tc c-cyan">28</td><td class="tc"><span class="pct-pill">100%</span></td><td><div class="fbar"><div class="fbar-fill" style="width:100%;--fc:#a855f7"></div></div></td></tr>
+              <tr><td><span class="fdot" style="--dc:#4a6cf7"></span>WABA Reports</td><td class="tc">16</td><td class="tc c-cyan">16</td><td class="tc"><span class="pct-pill">100%</span></td><td><div class="fbar"><div class="fbar-fill" style="width:100%;--fc:#4a6cf7"></div></div></td></tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td><strong>TOTAL</strong></td>
+                <td class="tc"><strong>667</strong></td>
+                <td class="tc c-cyan"><strong>667</strong></td>
+                <td class="tc"><strong>100%</strong></td>
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+        <p class="table-note">* Datos extraídos de qa-planning/results/ — 25 archivos de resultado analizados.</p>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         S7 — Bugs por severidad
+    ========================================================= -->
+    <section class="sec" id="s7">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="sec-num" style="--nc:#e879f9">7</div>
+          <h2 class="sec-title">Bugs por severidad</h2>
+        </div>
+        <div class="bugs-layout fade-in">
+
+          <!-- Donut CSS puro -->
+          <div class="donut-wrap">
+            <div class="donut" id="donut">
+              <div class="donut-hole">
+                <div class="donut-total">44</div>
+                <div class="donut-lbl">Total</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Leyenda + cards -->
+          <div class="bugs-right">
+            <div class="legend-rows">
+              <div class="legend-row">
+                <div class="legend-dot" style="background:#e879f9"></div>
+                <div class="legend-info">
+                  <span class="legend-name">Crítica / P0</span>
+                  <span class="legend-cnt">17</span>
+                </div>
+                <div class="legend-track">
+                  <div class="legend-fill" style="width:38.6%;background:#e879f9"></div>
+                </div>
+                <span class="legend-pct">38.6%</span>
+              </div>
+              <div class="legend-row">
+                <div class="legend-dot" style="background:#f97316"></div>
+                <div class="legend-info">
+                  <span class="legend-name">Alta / P2</span>
+                  <span class="legend-cnt">12</span>
+                </div>
+                <div class="legend-track">
+                  <div class="legend-fill" style="width:27.3%;background:#f97316"></div>
+                </div>
+                <span class="legend-pct">27.3%</span>
+              </div>
+              <div class="legend-row">
+                <div class="legend-dot" style="background:#fbbf24"></div>
+                <div class="legend-info">
+                  <span class="legend-name">Media / P3</span>
+                  <span class="legend-cnt">14</span>
+                </div>
+                <div class="legend-track">
+                  <div class="legend-fill" style="width:31.8%;background:#fbbf24"></div>
+                </div>
+                <span class="legend-pct">31.8%</span>
+              </div>
+              <div class="legend-row">
+                <div class="legend-dot" style="background:#4ade80"></div>
+                <div class="legend-info">
+                  <span class="legend-name">Baja</span>
+                  <span class="legend-cnt">4</span>
+                </div>
+                <div class="legend-track">
+                  <div class="legend-fill" style="width:9.1%;background:#4ade80"></div>
+                </div>
+                <span class="legend-pct">9.1%</span>
+              </div>
+            </div>
+            <div class="sev-chips">
+              <div class="sev-chip" style="--sc:#e879f9"><div class="sev-n">17</div><div class="sev-t">Crítica</div></div>
+              <div class="sev-chip" style="--sc:#f97316"><div class="sev-n">12</div><div class="sev-t">Alta</div></div>
+              <div class="sev-chip" style="--sc:#fbbf24"><div class="sev-n">14</div><div class="sev-t">Media</div></div>
+              <div class="sev-chip" style="--sc:#4ade80"><div class="sev-n">4</div><div class="sev-t">Baja</div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         S8 — Lecturas clave del reporte
+    ========================================================= -->
+    <section class="sec sec-alt" id="s8">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="sec-num" style="--nc:#4a6cf7">8</div>
+          <h2 class="sec-title">Lecturas clave del reporte</h2>
+        </div>
+        <div class="readings-grid">
+          <div class="reading-card fade-in">
+            <div class="reading-ico" style="--ri:#00d4ff">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <p>La automatización cubre <strong>901 de 926 casos</strong> de prueba (<strong>97.3%</strong>).</p>
+          </div>
+          <div class="reading-card fade-in">
+            <div class="reading-ico" style="--ri:#a855f7">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <p>La regresión pasó de <strong>horas manuales</strong> a <strong>minutos</strong> por suite completa.</p>
+          </div>
+          <div class="reading-card fade-in">
+            <div class="reading-ico" style="--ri:#4a6cf7">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <p>Existen <strong>233 specs activas</strong> distribuidas en <strong>4 plataformas</strong>.</p>
+          </div>
+          <div class="reading-card fade-in">
+            <div class="reading-ico" style="--ri:#e879f9">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <p>La operación QA es hoy más <strong>medible, visible</strong> y <strong>predecible</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         S9 — Recursos que hoy sostienen el proceso
+    ========================================================= -->
+    <section class="sec" id="s9">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="sec-num" style="--nc:#00ff88">9</div>
+          <h2 class="sec-title">Recursos que hoy sostienen el proceso</h2>
+        </div>
+        <div class="resources-grid">
+          <div class="res-card fade-in">
+            <div class="res-icon" style="--ri:#00d4ff">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="res-name">qa-context</div>
+            <div class="res-tag">Base de conocimiento</div>
+            <p class="res-desc">Evidencia y contexto QA · <strong>70+ archivos</strong> organizados.</p>
+          </div>
+          <div class="res-card fade-in">
+            <div class="res-icon" style="--ri:#a855f7">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="res-name">qa-planning</div>
+            <div class="res-tag">Planificación formal</div>
+            <p class="res-desc">Planes, aprobados, resultados y trazabilidad. Soporte y ejecución formal.</p>
+          </div>
+          <div class="res-card fade-in">
+            <div class="res-icon" style="--ri:#4a6cf7">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div class="res-name">metrics / comparison-report</div>
+            <div class="res-tag">Narrativa ejecutiva</div>
+            <p class="res-desc">Comparativos, reportes. Base para dashboard y seguimiento.</p>
+          </div>
+          <div class="res-card fade-in">
+            <div class="res-icon" style="--ri:#00ff88">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="res-name">Suites Cypress</div>
+            <div class="res-tag">Motor de automatización</div>
+            <p class="res-desc">Automatización activa en 4 plataformas. <strong>233 specs</strong> disponibles.</p>
+          </div>
+          <div class="res-card fade-in">
+            <div class="res-icon" style="--ri:#e879f9">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A2 2 0 013 12V7a4 4 0 014-4z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="res-name">Jira</div>
+            <div class="res-tag">Seguimiento de defectos</div>
+            <p class="res-desc">Documentación y seguimiento de bugs. Fuente viva para control de defectos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         S10 — Conclusión
+    ========================================================= -->
+    <section class="sec sec-alt" id="s10">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="sec-num" style="--nc:#00d4ff">10</div>
+          <h2 class="sec-title">Conclusión</h2>
+        </div>
+        <div class="conclusion-block fade-in">
+          <div class="conclusion-text">
+            <div class="conclusion-icon">
+              <svg viewBox="0 0 24 24" fill="none" width="40" height="40"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <p>
+              La automatización transformó el proceso QA: hoy existe <strong>mayor cobertura</strong>,
+              menos esfuerzo operativo, validaciones más rápidas y una operación más medible.
+              El área ya no solo ejecuta pruebas: <strong>ahora genera evidencia, comparativos
+              y seguimiento continuo.</strong>
+            </p>
+          </div>
+
+          <!-- Gráfico de línea de crecimiento -->
+          <div class="growth-wrap">
+            <div class="growth-y-label">Madurez QA →</div>
+            <div class="growth-chart-box" id="growthBars">
+              <svg class="growth-svg" viewBox="0 0 560 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%"   stop-color="#00d4ff" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%"   stop-color="#475569"/>
+                    <stop offset="55%"  stop-color="#4a6cf7"/>
+                    <stop offset="100%" stop-color="#00ff88"/>
+                  </linearGradient>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                  <!-- clip para animar de izquierda a derecha -->
+                  <clipPath id="lineClip">
+                    <rect x="0" y="0" width="0" height="200" id="clipRect">
+                      <animate attributeName="width" from="0" to="560" dur="1.8s" fill="freeze" begin="growthAnim.begin" calcMode="spline" keySplines="0.25 0.46 0.45 0.94" keyTimes="0;1"/>
+                    </rect>
+                  </clipPath>
+                </defs>
+
+                <!-- Cuadrícula horizontal tenue -->
+                <line x1="0" y1="40"  x2="560" y2="40"  stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+                <line x1="0" y1="80"  x2="560" y2="80"  stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+                <line x1="0" y1="120" x2="560" y2="120" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+                <line x1="0" y1="160" x2="560" y2="160" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+
+                <!-- Área rellena (animada con clipPath) -->
+                <g clip-path="url(#lineClip)">
+                  <path class="growth-area"
+                    d="M0,182 C30,178 50,172 90,162 C130,152 155,140 200,122 C245,104 270,88 315,68 C360,48 390,36 435,22 C460,15 500,10 560,5 L560,200 L0,200 Z"
+                    fill="url(#areaGrad)"/>
+                  <!-- Línea principal -->
+                  <path class="growth-line"
+                    d="M0,182 C30,178 50,172 90,162 C130,152 155,140 200,122 C245,104 270,88 315,68 C360,48 390,36 435,22 C460,15 500,10 560,5"
+                    fill="none" stroke="url(#lineGrad)" stroke-width="2.5" stroke-linecap="round" filter="url(#glow)"/>
+                </g>
+
+                <!-- Trigger invisible para la animación -->
+                <rect id="growthAnim" x="0" y="0" width="0" height="0" opacity="0"/>
+
+                <!-- Puntos en hitos clave (aparecen con delay) -->
+                <g class="growth-dots">
+                  <circle cx="90"  cy="162" r="4" fill="#475569" stroke="#0f172a" stroke-width="1.5" style="animation-delay:.4s"/>
+                  <circle cx="200" cy="122" r="4" fill="#475569" stroke="#0f172a" stroke-width="1.5" style="animation-delay:.7s"/>
+                  <circle cx="315" cy="68"  r="4" fill="#4a6cf7" stroke="#0f172a" stroke-width="1.5" style="animation-delay:1s"/>
+                  <circle cx="435" cy="22"  r="4.5" fill="#00d4ff" stroke="#0f172a" stroke-width="1.5" style="animation-delay:1.3s"/>
+                  <circle cx="560" cy="5"   r="5.5" fill="#00ff88" stroke="#0f172a" stroke-width="2"   style="animation-delay:1.6s"/>
+                </g>
+              </svg>
+
+              <!-- Labels del eje X -->
+              <div class="growth-xlabels">
+                <span>Q1 25</span><span>Q2 25</span><span>Q3 25</span><span>Q4 25</span>
+                <span>Feb 26</span><span>Mar 26</span><span>Abr 26</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         S11 — IA: Claude, Cypress y TypeScript
+    ========================================================= -->
+    <section class="sec" id="s11">
+      <div class="wrap">
+        <div class="sec-head">
+          <div class="sec-num" style="--nc:#e879f9">11</div>
+          <h2 class="sec-title">Pruebas automatizadas con IA: <em>Claude, Cypress y TypeScript</em></h2>
+        </div>
+        <div class="ia-row fade-in">
+
+          <div class="ia-card ia-claude">
+            <div class="ia-glow"></div>
+            <div class="ia-icon-wrap">
+              <!-- Claude: marca oficial Anthropic — pinwheel de 4 pétalos ámbar -->
+              <svg viewBox="0 0 80 80" fill="none" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(40,40)">
+                  <ellipse rx="9" ry="23" fill="#D4956A" transform="rotate(0)  translate(0,-12)"/>
+                  <ellipse rx="9" ry="23" fill="#C8845A" transform="rotate(45) translate(0,-12)"/>
+                  <ellipse rx="9" ry="23" fill="#D4956A" transform="rotate(90) translate(0,-12)"/>
+                  <ellipse rx="9" ry="23" fill="#C8845A" transform="rotate(135) translate(0,-12)"/>
+                  <ellipse rx="9" ry="23" fill="#D4956A" transform="rotate(180) translate(0,-12)"/>
+                  <ellipse rx="9" ry="23" fill="#C8845A" transform="rotate(225) translate(0,-12)"/>
+                  <ellipse rx="9" ry="23" fill="#D4956A" transform="rotate(270) translate(0,-12)"/>
+                  <ellipse rx="9" ry="23" fill="#C8845A" transform="rotate(315) translate(0,-12)"/>
+                </g>
+              </svg>
+            </div>
+            <div class="ia-name">Claude</div>
+            <div class="ia-tag" style="--it:#e879f9">IA · Análisis</div>
+            <p class="ia-desc">Apoyo en análisis, documentación, generación de ideas de pruebas, estructuración de métricas y soporte al proceso QA.</p>
+          </div>
+
+          <div class="ia-connector">
+            <div class="ia-line"></div>
+            <div class="ia-plus">+</div>
+            <div class="ia-line"></div>
+          </div>
+
+          <div class="ia-card ia-cypress">
+            <div class="ia-glow ia-glow-cyan"></div>
+            <div class="ia-icon-wrap">
+              <!-- Cypress: logo oficial — jade green crosshair -->
+              <svg viewBox="0 0 80 80" fill="none" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="36" stroke="#69D3A7" stroke-width="2" opacity=".35"/>
+                <circle cx="40" cy="40" r="14" stroke="#69D3A7" stroke-width="2.5"/>
+                <line x1="40" y1="4"  x2="40" y2="26" stroke="#69D3A7" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="40" y1="54" x2="40" y2="76" stroke="#69D3A7" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="4"  y1="40" x2="26" y2="40" stroke="#69D3A7" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="54" y1="40" x2="76" y2="40" stroke="#69D3A7" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="40" cy="40" r="4" fill="#69D3A7"/>
+              </svg>
+            </div>
+            <div class="ia-name">Cypress</div>
+            <div class="ia-tag" style="--it:#00d4ff">E2E · Regresión</div>
+            <p class="ia-desc">Motor principal de automatización y regresión funcional para pruebas web en todas las plataformas.</p>
+          </div>
+
+          <div class="ia-connector">
+            <div class="ia-line"></div>
+            <div class="ia-plus">+</div>
+            <div class="ia-line"></div>
+          </div>
+
+          <div class="ia-card ia-ts">
+            <div class="ia-glow ia-glow-blue"></div>
+            <div class="ia-icon-wrap">
+              <!-- TypeScript: logo oficial — cuadro azul #3178C6 con TS blanco -->
+              <svg viewBox="0 0 80 80" fill="none" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
+                <rect width="80" height="80" rx="12" fill="#3178C6"/>
+                <!-- Letra T -->
+                <line x1="14" y1="30" x2="44" y2="30" stroke="white" stroke-width="7" stroke-linecap="square"/>
+                <line x1="29" y1="30" x2="29" y2="62" stroke="white" stroke-width="7" stroke-linecap="square"/>
+                <!-- Letra S -->
+                <path d="M50 54 C50 58 54 62 60 62 C66 62 70 58 70 54 C70 50 66 48 60 46 C54 44 50 42 50 38 C50 34 54 30 60 30 C65 30 69 33 70 37" stroke="white" stroke-width="6" stroke-linecap="round" fill="none"/>
+              </svg>
+            </div>
+            <div class="ia-name">TypeScript</div>
+            <div class="ia-tag" style="--it:#4a6cf7">Tipado · Calidad</div>
+            <p class="ia-desc">Base técnica para mantener suites más claras, reutilizables y mantenibles a largo plazo.</p>
+          </div>
+
+        </div>
+
+        <div class="ia-footer fade-in">
+          <div class="ia-footer-line"></div>
+          <p class="ia-footer-text">
+            La combinación de <span class="ia-hl ia-hl-magenta">IA</span> +
+            <span class="ia-hl ia-hl-cyan">automatización</span> +
+            <span class="ia-hl ia-hl-blue">tipado</span>
+            fortalece la velocidad, trazabilidad y mantenibilidad del proceso QA.
+          </p>
+          <div class="ia-footer-line"></div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================= -->
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-logo">
+        <svg class="logo" width="100" height="20" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="125.93 114.8 1025.15 160.37"><path fill="#23BADC" d="M450 275c-16.83 0-33.162.054-49.492-.012-27.168-.11-53.112-21.107-56.295-48.224-1.636-13.942-.738-28.17-1.258-42.258-.439-11.854.668-23.422 6.307-34.017 9.793-18.4 24.982-29.522 45.788-32.453 4.718-.665 9.524-.986 14.29-.993 48.326-.07 96.651-.044 144.977-.042 7.522 0 8.334 1.424 4.856 8.449-3.204 6.47-6.606 12.856-9.512 19.46-1.718 3.905-4.198 5.174-8.36 5.162-42.827-.118-85.654-.24-128.479.044-11.084.073-21.59 3.346-28.219 13.061-2.832 4.15-3.933 9.54-5.423 14.486-.234.778 1.445 2.578 2.615 3.199 1.043.554 2.605.137 3.937.137 45.826.001 91.652-.002 137.478.004 5.874.001 6.822 1.363 4.466 6.688-3.042 6.878-6.273 13.673-9.3 20.558-1.228 2.796-3.072 3.846-6.165 3.812-13.163-.144-26.33.04-39.493-.082-28.6-.266-57.197-.663-85.796-.966-6.468-.069-8.174 2.422-6.628 8.713 3.216 13.09 14.18 21.692 26.804 22.12 26.243.886 52.518.827 78.78 1.136 2.517.03 5.146-.567 7.529-.023 3.684.843 4.596 3.835 3.056 6.983-3.67 7.504-7.433 14.987-11.696 22.159-.97 1.632-4.1 2.701-6.276 2.771-9.322.3-18.66.128-28.491.128z"></path><path fill="#FFFFFF" d="M150 117c40.315 0 80.13-.092 119.945.053 12.846.047 24.885 2.841 35.626 10.74 12.283 9.03 20.293 20.008 19.385 35.895-.38 6.65-.46 13.47-2.071 19.86-2.492 9.878-10.4 15.674-18.65 20.703-5.518 3.364-5.576 4.443-.238 8.298 6.973 5.036 14.232 9.944 16.244 19.184.72 3.305 1.583 6.656 1.68 10.006.241 8.323.093 16.657.075 24.986-.014 6.426-1.816 8.271-8.012 8.274-7.497.004-14.995-.105-22.489.043-4.075.08-5.62-1.668-5.54-5.66.154-7.494-.032-14.994.06-22.49.202-16.26-8.978-22.516-22.303-22.725-32.477-.511-64.968-.145-97.453-.192-4.609-.007-6.33 2.205-6.294 6.63.1 12.493.056 24.988.026 37.482-.015 5.976-.971 6.907-6.798 6.912-7.496.006-14.996-.117-22.488.055-3.289.076-4.779-.708-4.772-4.41.1-49.477.097-98.955.017-148.432-.007-4.488 2.74-5.123 6.06-5.182 5.828-.106 11.66-.03 17.99-.03m62.5 31c-15.996 0-31.992.085-47.987-.066-3.523-.033-4.626 1.138-4.577 4.616.167 11.994.056 23.993.067 35.99.006 5.973.506 6.457 6.65 6.458 32.825.005 65.652-.247 98.473.112 15.222.167 27.364-9.77 25.912-26.432-.96-11.013-9.706-20.867-21.054-20.737-18.825.216-37.656.059-57.484.059zM853 275c-20.49 0-40.493.451-60.468-.106-29.812-.831-55.087-21.834-60.098-51.358-2.69-15.842-2.543-32.54-1.113-48.624 2.552-28.72 24.176-52.46 53.23-56.9 3.219-.492 6.484-.964 9.729-.97 43.145-.063 86.291-.042 129.437-.042 6.593 0 8.266 1.714 8.28 8.507.012 5.664.057 11.328-.011 16.992-.08 6.694-1.89 8.487-8.416 8.497-9.163.014-18.325.004-27.487.004-32.817 0-65.638.26-98.45-.108-16.928-.19-32.493 14.14-31.712 31.976.437 9.976-.107 19.991.125 29.981.302 12.987 11.214 26.299 24.617 28.107 4.537.613 9.144.991 13.72 1 40.146.076 80.294.125 120.44-.04 6.393-.026 7.466 1.872 7.246 7.02-.283 6.652-.24 13.33-.01 19.986.157 4.5-1.568 6.167-6.095 6.142-24.154-.135-48.31-.064-72.964-.064zM687.73 182.231c5.745 11.07 11.149 21.907 16.71 32.663 8.669 16.766 17.484 33.457 26.154 50.223 3.518 6.803 1.604 9.88-5.917 9.883-6.832.002-13.684-.326-20.487.108-4.985.318-7.649-2.092-9.616-6.02-4.559-9.096-9.176-18.165-13.55-27.35-1.7-3.57-3.954-4.86-8.02-4.84-34.155.179-68.313.24-102.467-.034-5.677-.045-8.41 2.637-10.514 7.026-4.04 8.424-8.107 16.837-12.014 25.322-1.929 4.19-4.666 6.182-9.558 5.893-6.973-.412-13.989-.095-20.987-.108-6.405-.012-8.109-2.927-5.148-8.763 12.71-25.052 25.412-50.109 38.129-75.158 9.28-18.281 18.403-36.646 27.937-54.795 5.64-10.736 15.676-16.095 26.842-19.181 14.11-3.9 28.187-2.876 41.412 3.334 7.521 3.531 14.037 8.792 17.972 16.645 7.52 15.01 15.225 29.928 23.122 45.152m-105.695 19.562c.921 1.074 1.693 2.856 2.792 3.088a50.412 50.412 0 0 0 10.117 1.075c19.624.09 39.25-.016 58.873.096 3.838.021 4.528-2.239 4.063-5.021a30.632 30.632 0 0 0-2.62-8.222c-6.332-13.046-12.569-26.15-19.364-38.956-5.715-10.77-22.71-11.306-29.175-.962-3.73 5.968-6.519 12.53-9.685 18.847-4.9 9.773-9.76 19.566-15.001 30.055zM1120.24 117.932c9.163-.364 17.909-.914 26.628-.632 1.438.046 3.825 3.68 3.943 5.76.462 8.14.189 16.322.189 24.488v118.488c0 8.054-.935 8.964-9.208 8.964-5.666 0-11.332.004-16.998-.001-5.903-.006-7.777-1.892-7.786-8-.024-15.832-.003-31.664-.01-47.496-.003-5.533-2.805-8.48-8.36-8.485-37.996-.034-75.992-.03-113.988-.006-5.782.004-8.63 2.942-8.64 8.83-.028 15.999-.001 31.997-.015 47.996-.005 5.267-1.838 7.137-7.005 7.156-6.666.024-13.332.023-19.998 0-4.682-.015-6.77-2.059-6.984-6.798-.053-1.164-.008-2.333-.008-3.5V126.21c0-7.754 1.441-9.21 9.085-9.21 5.833 0 11.666-.01 17.499.003 5.607.012 7.408 1.76 7.412 7.253.012 16.165-.006 32.33.009 48.495.006 6.513 2.728 9.242 9.238 9.244 37.496.01 74.992.01 112.488 0 6.608-.001 9.267-2.637 9.268-9.091.002-15.832-.12-31.666.127-47.493.038-2.476 1.75-4.925 3.114-7.479z"></path></svg>
+        <span>· Reporte QA 2026</span>
+      </div>
+      <p class="footer-note">Generado con Claude + Cypress · reach-test-automations</p>
+    </div>
+  </footer>
+
+  <!-- Scroll top -->
+  <button class="btn-top" id="btnTop" aria-label="Ir arriba">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
